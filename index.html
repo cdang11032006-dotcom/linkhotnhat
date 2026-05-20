@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TikTok Affiliate Landing</title>
+<title>🔥 Video Hot Nhất</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+
+:root{
+    --bg:#ffffff;
+    --text:#111111;
+    --card:#ffffff;
+    --primary:#ff0050;
+    --border:#e5e7eb;
+}
+
+body.dark{
+    --bg:#111827;
+    --text:#f3f4f6;
+    --card:#1f2937;
+    --border:#374151;
+}
 
 *{
     margin:0;
@@ -15,127 +33,278 @@
 }
 
 body{
-    background:#0f0f0f;
-    color:#fff;
-    min-height:2000px;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+    overflow-x:hidden;
 }
 
-/* Fake landing content */
+/* Loading */
+
+#loading{
+    position:fixed;
+    inset:0;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.loader{
+    width:55px;
+    height:55px;
+    border:5px solid #ddd;
+    border-top:5px solid var(--primary);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Header */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding:14px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+body.dark header{
+    background:rgba(17,24,39,.92);
+}
+
+.logo{
+    color:var(--primary);
+    font-size:22px;
+    font-weight:bold;
+}
+
+.top-actions{
+    display:flex;
+    gap:12px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    background:var(--card);
+    color:var(--text);
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    font-size:17px;
+}
+
+/* Hero */
+
 .hero{
-    padding:80px 20px;
     text-align:center;
+    padding:35px 20px 15px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:15px;
+    font-size:34px;
+    color:var(--primary);
+    margin-bottom:10px;
 }
 
 .hero p{
-    color:#ccc;
-    font-size:16px;
-    line-height:1.6;
+    color:#6b7280;
+    font-size:15px;
 }
 
-/* Popup Overlay */
-#popup-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:999999;
-    padding:20px;
+/* Video Section */
+
+.video-section{
+    width:min(900px,92%);
+    margin:20px auto 100px;
 }
 
-/* Popup Box */
-#popup-box{
-    width:100%;
-    max-width:360px;
-    background:#fff;
-    border-radius:24px;
+.video-card{
+    background:var(--card);
+    border-radius:22px;
     overflow:hidden;
-    position:relative;
-    text-align:center;
-    animation:popupShow .35s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border:1px solid var(--border);
 }
 
-/* Animation */
-@keyframes popupShow{
-    from{
-        opacity:0;
-        transform:translateY(40px) scale(.9);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-/* Product Image */
-#popup-box img{
+.video-card img{
     width:100%;
-    height:240px;
-    object-fit:cover;
+    display:block;
+    cursor:pointer;
 }
 
-/* Content */
-.popup-content{
-    padding:24px;
+.content{
+    padding:22px;
 }
 
-.popup-content h2{
-    color:#111;
-    font-size:28px;
-    margin-bottom:12px;
+.content p{
+    line-height:1.7;
+    margin-bottom:24px;
 }
 
-.popup-content p{
-    color:#666;
-    font-size:14px;
-    line-height:1.6;
+/* Button */
+
+.action-buttons{
     margin-bottom:22px;
 }
 
-/* CTA Button */
-#shop-btn{
-    display:inline-block;
-    background:#ff0050;
-    color:#fff;
-    text-decoration:none;
-    padding:14px 30px;
+.btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:16px;
     border-radius:14px;
+    text-decoration:none;
     font-weight:bold;
     font-size:16px;
-    transition:.3s;
+    background:var(--primary);
+    color:white;
+    transition:.25s;
 }
 
-#shop-btn:hover{
-    transform:scale(1.05);
-    background:#d60043;
+.btn:hover{
+    transform:translateY(-3px);
+    opacity:.95;
 }
 
-/* Close Button */
-#close-popup{
+/* Grid */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.grid img{
+    width:100%;
+    border-radius:14px;
+    cursor:pointer;
+}
+
+/* Popup */
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.popup-box{
+    width:100%;
+    max-width:360px;
+    background:var(--card);
+    border-radius:24px;
+    overflow:hidden;
+    position:relative;
+    animation:popup .35s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.popup-box img{
+    width:100%;
+    display:block;
+}
+
+.popup-content{
+    padding:20px;
+    text-align:center;
+}
+
+.popup-content h2{
+    margin-bottom:10px;
+}
+
+.popup-content p{
+    color:#6b7280;
+    margin-bottom:20px;
+}
+
+.popup-btn{
+    display:block;
+    padding:15px;
+    border-radius:14px;
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.close-popup{
     position:absolute;
     top:10px;
-    right:16px;
-    color:#fff;
-    font-size:32px;
+    right:12px;
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.5);
+    color:white;
     cursor:pointer;
-    z-index:10;
+}
+
+/* Footer */
+
+footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:var(--card);
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+    z-index:1000;
+}
+
+footer a{
+    text-decoration:none;
+    color:var(--text);
+    font-size:13px;
+    text-align:center;
+}
+
+footer i{
+    display:block;
+    font-size:20px;
+    margin-bottom:4px;
 }
 
 /* Mobile */
-@media(max-width:480px){
+
+@media(max-width:600px){
 
     .hero h1{
-        font-size:34px;
-    }
-
-    .popup-content h2{
-        font-size:24px;
+        font-size:28px;
     }
 
 }
@@ -145,47 +314,119 @@ body{
 
 <body>
 
-<!-- Demo Content -->
+<!-- Loading -->
+<div id="loading">
+    <div class="loader"></div>
+</div>
+
+<!-- Header -->
+<header>
+
+    <div class="logo">
+        HOT VIDEO
+    </div>
+
+    <div class="top-actions">
+
+        <button class="icon-btn" id="darkBtn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <button class="icon-btn" id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
+
+</header>
+
+<!-- Hero -->
 <section class="hero">
 
-    <h1>🔥 TikTok Hot Deals</h1>
+    <h1>🔥 Video Hot Nhất</h1>
 
     <p>
-        Scroll down to unlock today’s exclusive TikTok Shop offer.
+        Video đang viral cực mạnh trên TikTok
     </p>
 
 </section>
 
-<!-- Popup -->
-<div id="popup-overlay">
+<!-- Main -->
+<section class="video-section">
 
-    <div id="popup-box">
+    <div class="video-card">
 
-        <!-- Close -->
-        <span id="close-popup">&times;</span>
+        <img
+        id="mainVideo"
+        src="fakevideo.jpg"
+        alt="Video">
 
-        <!-- Product Image -->
-        <img 
-        src="https://picsum.photos/500/400"
-        alt="TikTok Product">
-
-        <!-- Content -->
-        <div class="popup-content">
-
-            <h2>Limited Offer</h2>
+        <div class="content">
 
             <p>
-                Huge discount available right now.
-                Tap below before the promotion ends.
+                Clip đang được chia sẻ rộng rãi trên mạng xã hội,
+                thu hút hàng triệu lượt xem chỉ trong thời gian ngắn.
             </p>
 
-            <!-- Affiliate Button -->
-            <a 
-            href="https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/"
-            target="_blank"
-            id="shop-btn">
+            <!-- Download Button -->
+            <div class="action-buttons">
 
-            Shop Now
+                <a
+                class="btn"
+                href="https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/"
+                target="_blank">
+
+                ⬇️ Download Video
+
+                </a>
+
+            </div>
+
+            <!-- Grid -->
+            <div class="grid">
+
+                <img src="loading.jpg">
+                <img src="loading.jpg">
+                <img src="loading.jpg">
+                <img src="loading.jpg">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <button
+        class="close-popup"
+        id="closePopup">
+
+        ✕
+
+        </button>
+
+        <img src="quangcao.jpg">
+
+        <div class="popup-content">
+
+            <h2>🔥 Hot Trend TikTok</h2>
+
+            <p>
+                Xem video đang viral mạnh nhất hôm nay
+            </p>
+
+            <a
+            class="popup-btn"
+            href="https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/"
+            target="_blank">
+
+            Xem Ngay
 
             </a>
 
@@ -195,49 +436,118 @@ body{
 
 </div>
 
+<!-- Footer -->
+<footer>
+
+    <a href="#">
+        <i class="fa-solid fa-house"></i>
+        Home
+    </a>
+
+    <a href="#">
+        <i class="fa-solid fa-fire"></i>
+        Trending
+    </a>
+
+    <a href="#">
+        <i class="fa-solid fa-compass"></i>
+        Explore
+    </a>
+
+</footer>
+
 <script>
 
-const popup = document.getElementById("popup-overlay");
-const closePopup = document.getElementById("close-popup");
+const LINK =
+"https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/";
 
-let popupShown = false;
+const popup =
+document.getElementById("popup");
 
-/* Show popup after scroll */
-window.addEventListener("scroll", () => {
+const closePopup =
+document.getElementById("closePopup");
 
-    if(window.scrollY > 150 && !popupShown){
+const darkBtn =
+document.getElementById("darkBtn");
 
-        popup.style.display = "flex";
+const searchBtn =
+document.getElementById("searchBtn");
 
-        popupShown = true;
+/* Loading */
 
-        /* Auto redirect after 2 seconds */
-        setTimeout(() => {
+window.addEventListener("load",()=>{
 
-            window.location.href =
-            "https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/";
+    setTimeout(()=>{
 
-        }, 2000);
+        document.getElementById("loading")
+        .style.display="none";
 
-    }
-
-});
-
-/* Close popup */
-closePopup.addEventListener("click", () => {
-
-    popup.style.display = "none";
+    },700);
 
 });
 
-/* Close outside */
-popup.addEventListener("click", (e) => {
+/* Dark Mode */
 
-    if(e.target === popup){
+if(localStorage.getItem("dark")==="on"){
 
-        popup.style.display = "none";
+    document.body.classList.add("dark");
 
-    }
+}
+
+darkBtn.addEventListener("click",()=>{
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "dark",
+        document.body.classList.contains("dark")
+        ? "on"
+        : "off"
+    );
+
+});
+
+/* Search */
+
+searchBtn.addEventListener("click",()=>{
+
+    window.open(LINK,"_blank");
+
+});
+
+/* Popup */
+
+setTimeout(()=>{
+
+    popup.style.display="flex";
+
+},1400);
+
+closePopup.addEventListener("click",()=>{
+
+    popup.style.display="none";
+
+});
+
+/* Main Video */
+
+document.getElementById("mainVideo")
+.addEventListener("click",()=>{
+
+    window.open(LINK,"_blank");
+
+});
+
+/* Grid */
+
+document.querySelectorAll(".grid img")
+.forEach(img=>{
+
+    img.addEventListener("click",()=>{
+
+        window.open(LINK,"_blank");
+
+    });
 
 });
 
