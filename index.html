@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Affiliate Landing</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:#fff;
+    min-height:2000px;
+}
+
+/* Fake landing content */
+.hero{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#ccc;
+    font-size:16px;
+    line-height:1.6;
+}
+
+/* Popup Overlay */
+#popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    padding:20px;
+}
+
+/* Popup Box */
+#popup-box{
+    width:100%;
+    max-width:360px;
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    position:relative;
+    text-align:center;
+    animation:popupShow .35s ease;
+}
+
+/* Animation */
+@keyframes popupShow{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* Product Image */
+#popup-box img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+/* Content */
+.popup-content{
+    padding:24px;
+}
+
+.popup-content h2{
+    color:#111;
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.popup-content p{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+/* CTA Button */
+#shop-btn{
+    display:inline-block;
+    background:#ff0050;
+    color:#fff;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:14px;
+    font-weight:bold;
+    font-size:16px;
+    transition:.3s;
+}
+
+#shop-btn:hover{
+    transform:scale(1.05);
+    background:#d60043;
+}
+
+/* Close Button */
+#close-popup{
+    position:absolute;
+    top:10px;
+    right:16px;
+    color:#fff;
+    font-size:32px;
+    cursor:pointer;
+    z-index:10;
+}
+
+/* Mobile */
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .popup-content h2{
+        font-size:24px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Demo Content -->
+<section class="hero">
+
+    <h1>🔥 TikTok Hot Deals</h1>
+
+    <p>
+        Scroll down to unlock today’s exclusive TikTok Shop offer.
+    </p>
+
+</section>
+
+<!-- Popup -->
+<div id="popup-overlay">
+
+    <div id="popup-box">
+
+        <!-- Close -->
+        <span id="close-popup">&times;</span>
+
+        <!-- Product Image -->
+        <img 
+        src="https://picsum.photos/500/400"
+        alt="TikTok Product">
+
+        <!-- Content -->
+        <div class="popup-content">
+
+            <h2>Limited Offer</h2>
+
+            <p>
+                Huge discount available right now.
+                Tap below before the promotion ends.
+            </p>
+
+            <!-- Affiliate Button -->
+            <a 
+            href="https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/"
+            target="_blank"
+            id="shop-btn">
+
+            Shop Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const popup = document.getElementById("popup-overlay");
+const closePopup = document.getElementById("close-popup");
+
+let popupShown = false;
+
+/* Show popup after scroll */
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 150 && !popupShown){
+
+        popup.style.display = "flex";
+
+        popupShown = true;
+
+        /* Auto redirect after 2 seconds */
+        setTimeout(() => {
+
+            window.location.href =
+            "https://vt.tiktok.com/ZS9YBKp2uqWRk-6UbSt/";
+
+        }, 2000);
+
+    }
+
+});
+
+/* Close popup */
+closePopup.addEventListener("click", () => {
+
+    popup.style.display = "none";
+
+});
+
+/* Close outside */
+popup.addEventListener("click", (e) => {
+
+    if(e.target === popup){
+
+        popup.style.display = "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
